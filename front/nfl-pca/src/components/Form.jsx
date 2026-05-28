@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API_URL = "http://localhost:3000/api/players";
+const API_URL = "http://localhost:8000/api/jugadores/";
 
 const FIELDS = [
   { name: "nombre ",   label: "Nombre del Jugador", type: "text",   placeholder: "Ej. Patrick Mahomes" },
