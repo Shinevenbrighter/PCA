@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Endpoint de ejemplo: genera una imagen aleatoria. Reemplaza con tu URL real.
-const IMAGE_ENDPOINT = "https://www.imdb.com/name/nm2496281/mediaviewer/rm3533983233/";
+const IMAGE_ENDPOINT = "localhost:8000/api/grafica/";
 
 export default function Graphic() {
   const [imageUrl, setImageUrl] = useState(null);
