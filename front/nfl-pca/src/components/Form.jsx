@@ -3,7 +3,7 @@ import { useState } from "react";
 const API_URL = "http://localhost:8000/api/jugadores/";
 
 const FIELDS = [
-  { name: "nombre ",   label: "Nombre del Jugador", type: "text",   placeholder: "Ej. Patrick Mahomes" },
+  { name: "nombre",   label: "Nombre del Jugador", type: "text",   placeholder: "Ej. Patrick Mahomes" },
   { name: "velocidad",        label: "Velocidad",           type: "number", placeholder: "0 – 100" },
   { name: "agilidad",      label: "Agilidad",            type: "number", placeholder: "0 – 100" },
   { name: "fuerza",     label: "Fuerza",              type: "number", placeholder: "0 – 100" },
