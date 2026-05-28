@@ -4,5 +4,4 @@ from .services import verificar_modelo
 
 @shared_task
 def verificar_modelo_task():
-
     verificar_modelo()

@@ -1,9 +1,8 @@
+# urls.py (raíz del proyecto)
+from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-
-    path(
-        '',
-        include('jugadores.urls')
-    )
+    path('admin/', admin.site.urls),
+    path('api/', include('jugadores.urls')),
 ]

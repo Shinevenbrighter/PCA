@@ -1,28 +1,10 @@
-from django.urls import path, include
+# jugadores/urls.py
+from django.urls import path
+from .views import JugadorViewSet, obtener_grafica
 
-from rest_framework.routers import DefaultRouter
-
-from .views import (
-    JugadorViewSet,
-    obtener_grafica
-)
-
-router = DefaultRouter()
-
-router.register(
-    r'jugadores',
-    JugadorViewSet
-)
+jugador_create = JugadorViewSet.as_view({'post': 'create'})
 
 urlpatterns = [
-
-    path(
-        'api/',
-        include(router.urls)
-    ),
-
-    path(
-        'api/grafica/',
-        obtener_grafica
-    )
+    path('jugadores/', jugador_create, name='jugador-create'),
+    path('grafica/', obtener_grafica, name='obtener-grafica'),
 ]
