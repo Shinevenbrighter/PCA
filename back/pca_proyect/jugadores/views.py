@@ -20,7 +20,14 @@ class JugadorViewSet(CreateModelMixin, GenericViewSet):
         verificar_modelo_task.delay()
 
 
+# views.py
+from django.http import HttpResponse, HttpResponseNotFound
+
 def obtener_grafica(request):
     if not os.path.exists(GRAPH_PATH):
         return HttpResponseNotFound("Todavía no existe una gráfica.")
-    return FileResponse(open(GRAPH_PATH, 'rb'), content_type='image/png')
+    
+    with open(GRAPH_PATH, 'rb') as f:
+        contenido = f.read()
+    
+    return HttpResponse(contenido, content_type='image/png')

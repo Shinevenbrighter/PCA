@@ -50,28 +50,27 @@ class ObtenerGraficaTests(APITestCase):
 
     def setUp(self):
         self.url = '/api/grafica/'
-        self.path_grafica = os.path.join(settings.BASE_DIR, 'static', 'pca_actual.png') # ruta del archivo de la gráfica generada por el servicio
+        self.path_grafica = os.path.join(settings.BASE_DIR, 'static', 'pca_actual.png')
 
-# TEST 3: veriifica que el endpoint (GET /api/grafica/) retorna 404 cuando el archivo PNG no existe 
+    def tearDown(self):
+        # limpia el archivo después de cada test sin importar qué pasó
+        if os.path.exists(self.path_grafica):
+            os.remove(self.path_grafica)
+
     def test_grafica_no_existe_retorna_404(self):
-       response= self.client.get(self.url) #se hace la petición sin que exista el archivo
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-       self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND) # se verifica que el status sea 404
-
-# TEST 4: verifica que el endpoint (GET /api/grafica/) retorna 200 cuando el archivo PNG existe
     def test_grafica_existe_retorna_200(self):
-        os.makedirs(os.path.dirname(self.path_grafica), exist_ok=True) # se crea la carpeta static / si no existe
-
+        os.makedirs(os.path.dirname(self.path_grafica), exist_ok=True)
         with open(self.path_grafica, 'wb') as f:
-            f.write(b'\x89PNG\r\n\x1a\n') # se escribe el encabezado de un archivo PNG para simular su existencia
+            f.write(b'\x89PNG\r\n\x1a\n')
 
-        response = self.client.get(self.url) # se hace la petición al endpoint
+        response = self.client.get(self.url)
 
-        os.remove(self.path_grafica) # se elimina el archivo despues de haber ejecutado el test
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response['Content-Type'], 'image/png') # verifica que la repsuesta sea una imagen PNG
-
-
+        self.assertEqual(response['Content-Type'], 'image/png')
+        # ya no borras aquí, lo hace tearDown
 
 class VectorPCATests(APITestCase):
 

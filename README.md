@@ -53,7 +53,13 @@ cd back/pca_proyect
 python manage.py runserver
 ```
 
-5) Frontend (opcional):
+5) Test
+```powershell
+cd back/pca_proyect
+python manage.py test jugadores
+```
+
+6) Frontend (opcional):
 ```bash
 cd front/nfl-pca
 npm install

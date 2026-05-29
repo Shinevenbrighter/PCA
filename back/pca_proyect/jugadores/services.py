@@ -11,6 +11,7 @@ from .models import Jugador
 
 MODEL_PATH = os.path.join(settings.BASE_DIR, 'pca_model.pkl')
 GRAPH_PATH = os.path.join(settings.BASE_DIR, 'static', 'pca_actual.png')
+
 def verificar_modelo():
 
     pendientes = Jugador.objects.filter(entrenado=False).order_by('id')
