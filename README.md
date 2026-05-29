@@ -1,8 +1,8 @@
 # PCA
 
-Valentina Tejeda Fuentes
-Anairam San Nicolas Rodríguez
-Pedro Enrique Mendoza García 
+- Valentina Tejeda Fuentes
+- Anairam San Nicolas Rodríguez
+- Pedro Enrique Mendoza García 
 
 Proyecto PCA para jugadores (backend Django + frontend React).
 El sistema utiliza IncrementalPCA de scikit-learn para reducir 10 variables numéricas de cada jugador a una representación bidimensional (PCA_X, PCA_Y), permitiendo visualizar similitudes entre jugadores en una gráfica 2D.
